@@ -1,0 +1,30 @@
+{
+    "name": "plenta/contao-countup-bundle",
+    "description": "This content element counts up numbers.",
+    "type": "contao-bundle",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "contao/core-bundle": "^4.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4.2",
+        "contao/test-case": "^1.2",
+        "symfony/phpunit-bridge": "^4",
+        "sensiolabs/security-checker": "^6.0.2",
+        "phpstan/phpstan": "^0.11.19",
+        "phpstan/phpstan-symfony": "^0.11.6",
+        "contao/phpstan": "^0.8.1",
+        "phpstan/phpstan-phpunit": "^0.11.2",
+        "contao/news-bundle": "4.8.* || 4.9.*",
+        "friendsofphp/php-cs-fixer": "^2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plenta\\ContaoCountUpBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Plenta\\ContaoCountUpBundle\\ContaoManager\\Plugin"
+    }
+}

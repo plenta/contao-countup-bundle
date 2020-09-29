@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Plenta\ContaoCountUpBundle\:
+        resource: ../../../ContaoCountUpBundle
+        exclude: ../../../ContaoCountUpBundle/{Entity,Migrations,Resources,Tests}
+
+    Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement\CountUpElementController:
+        tags:
+            -   name: contao.content_element
+                category: texts
+                template: ce_plenta_countup
+                type: plenta_countup
