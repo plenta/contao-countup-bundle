@@ -1,0 +1,5 @@
+framework:
+    assets:
+        packages:
+            contaocountup:
+                json_manifest_path: '%kernel.root_dir%/../web/bundles/contaocountup/manifest.json'

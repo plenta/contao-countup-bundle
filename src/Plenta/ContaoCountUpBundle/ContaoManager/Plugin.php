@@ -19,8 +19,10 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Plenta\ContaoCountUpBundle\ContaoCountUpBundle;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 
-class Plugin implements BundlePluginInterface
+class Plugin implements BundlePluginInterface, ConfigPluginInterface
 {
     public function getBundles(ParserInterface $parser): array
     {
@@ -28,5 +30,10 @@ class Plugin implements BundlePluginInterface
             BundleConfig::create(ContaoCountUpBundle::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
+    }
+
+    public function registerContainerConfiguration(LoaderInterface $loader, array $config)
+    {
+        $loader->load('@ContaoCountUpBundle/Resources/config/config.yml');
     }
 }
