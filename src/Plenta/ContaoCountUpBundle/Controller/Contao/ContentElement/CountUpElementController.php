@@ -16,6 +16,7 @@ namespace Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
+use Contao\StringUtil;
 use Contao\Template;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +34,22 @@ class CountUpElementController extends AbstractContentElementController
     protected function getResponse(Template $template, ContentModel $model, Request $request): ?Response
     {
         $GLOBALS['TL_BODY'][] = '<script src="'.$this->packages->getUrl('contaocountup/countup.js', 'contaocountup').'" defer ></script>';
+
         $template->text = $model->text;
+
+        if ('' === $template->cssID) {
+            $template->cssID = ' id="countup-'.$model->id.'"';
+        }
+
+        $template->valueID = 'countup-'.$model->id.'-value';
+
+        $dataAttriutes = [];
+
+        $dataAttriutes[] = 'data-duration="'.$model->plentaCountUpDuration.'"';
+        $dataAttriutes[] = 'data-startval="'.$model->plentaCountUpValueStart.'"';
+        $dataAttriutes[] = 'data-decimalplaces="'.$model->plentaCountUpDecimalPlaces.'"';
+
+        $template->dataAttributes = implode(' ', $dataAttriutes);
 
         return $template->getResponse();
     }
