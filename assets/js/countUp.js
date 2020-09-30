@@ -11,7 +11,10 @@ import { CountUp } from 'countup.js';
         var options = {
             'duration': el.dataset.duration,
             'startVal': el.dataset.startval,
-            'decimalPlaces': el.dataset.decimalplaces
+            'decimalPlaces': el.dataset.decimalplaces,
+            'decimal': el.dataset.decimal,
+            'separator': el.dataset.separator,
+            'useGrouping': (el.dataset.usegrouping === "true" ? true : false)
         };
         countUpItems[el.id] = new CountUp(el.id, el.innerHTML, options);
     });

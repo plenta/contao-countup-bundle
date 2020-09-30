@@ -14,3 +14,11 @@ services:
                 category: texts
                 template: ce_plenta_countup
                 type: plenta_countup
+
+    Plenta\ContaoCountUpBundle\EventListener\Contao\DataContainer\CountUpListener:
+        public: true
+        tags:
+            - { name: 'contao.callback', table: 'tl_content', target: 'fields.plentaCountUpValue.save', method: 'onValueSaveCallback' }
+            - { name: 'contao.callback', table: 'tl_content', target: 'fields.plentaCountUpValueStart.save', method: 'onValueSaveCallback' }
+            - { name: 'contao.callback', table: 'tl_content', target: 'fields.plentaCountUpValue.load', method: 'onValueLoadCallback' }
+            - { name: 'contao.callback', table: 'tl_content', target: 'fields.plentaCountUpValueStart.load', method: 'onValueLoadCallback' }
