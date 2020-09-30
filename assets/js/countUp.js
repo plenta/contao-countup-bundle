@@ -16,7 +16,7 @@ import { CountUp } from 'countup.js';
             'separator': el.dataset.separator,
             'useGrouping': (el.dataset.usegrouping === "true" ? true : false)
         };
-        countUpItems[el.id] = new CountUp(el.id, el.innerHTML, options);
+        countUpItems[el.id] = new CountUp(el.id, el.dataset.endval, options);
     });
 
     function destroyCountUp(elID)

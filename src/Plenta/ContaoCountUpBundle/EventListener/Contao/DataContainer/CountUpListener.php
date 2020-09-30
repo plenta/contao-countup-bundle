@@ -65,7 +65,7 @@ class CountUpListener
         $activeRecord = $dc->activeRecord;
         if ('plenta_countup' === $activeRecord->type) {
             $sql = 'UPDATE tl_content SET plentaCountUpDecimalPlaces=? WHERE id=?';
-            $qb = $this->database->prepare($sql)->execute([$this->decimalPlaces, $activeRecord->id]);
+            $this->database->prepare($sql)->execute([$this->decimalPlaces, $activeRecord->id]);
         }
     }
 
