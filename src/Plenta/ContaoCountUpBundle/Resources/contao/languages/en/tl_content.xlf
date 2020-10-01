@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="tl_content.plentaCountUpValue.0">
+                <target>Count up value</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValue.1">
+                <target>Please enter the number that you want to count up.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValueStart.0">
+                <target>Start value</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValueStart.1">
+                <target>Please enter the start value from which the count up should start. Decimal places must be the same as for the count up value.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpDuration.0">
+                <target>Animation duration</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpDuration.1">
+                <target>Animation duration in seconds.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpPrefix.0">
+                <target>Prefix</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpPrefix.1">
+                <target>Text prepended to the result.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpSuffix.0">
+                <target>Suffix</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpSuffix.1">
+                <target>Text appended to the result.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseGrouping.0">
+                <target>Number grouping</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseGrouping.1">
+                <target>Activate number grouping (1,000 vs 1000).</target>
+            </trans-unit>
+            <trans-unit id="tl_content.countup_legend">
+                <target>Count up settings</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

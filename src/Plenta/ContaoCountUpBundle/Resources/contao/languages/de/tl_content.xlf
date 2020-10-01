@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="tl_content.plentaCountUpValue.0">
+                <target>Endwert</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValue.1">
+                <target>Geben Sie die Zahl ein bis zu der hochgezählt werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValueStart.0">
+                <target>Anfangswert</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpValueStart.1">
+                <target>Geben Sie den Anfangswert ein von dem hochgezählt werden soll. Die Anzahl der Nachkommastellen für den Endwert und den Anfangswert müssen gleich sein.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpDuration.0">
+                <target>Animationsdauer</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpDuration.1">
+                <target>Animationsdauer in Sekunden.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpPrefix.0">
+                <target>Präfix</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpPrefix.1">
+                <target>Text vor der Zahl.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpSuffix.0">
+                <target>Suffix</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpSuffix.1">
+                <target>Text nach der Zahl.</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseGrouping.0">
+                <target>Zahlengruppierung</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseGrouping.1">
+                <target>Zahlengruppierung aktivieren (1,000 vs 1000).</target>
+            </trans-unit>
+            <trans-unit id="tl_content.countup_legend">
+                <target>Count-up-Einstellungen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

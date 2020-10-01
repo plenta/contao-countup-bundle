@@ -30,6 +30,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
     'eval' => [
         'maxlength' => 255,
         'tl_class' => 'w50',
+        'mandatory' => true
     ],
     'sql' => "varchar(255) NOT NULL default ''",
 ];
@@ -42,6 +43,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValueStart'] = [
     'eval' => [
         'maxlength' => 255,
         'tl_class' => 'w50',
+        'mandatory' => true
     ],
     'sql' => "varchar(255) NOT NULL default '0'",
 ];
@@ -55,6 +57,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDuration'] = [
         'maxlength' => 255,
         'tl_class' => 'w50',
         'rgxp' => 'digit',
+        'mandatory' => true
     ],
     'sql' => "varchar(255) NOT NULL default '2'",
 ];
