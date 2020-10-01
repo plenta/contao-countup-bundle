@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpUseGrouping'] = [
     'inputType' => 'checkbox',
     'default' => 1,
     'eval' => [
-        'tl_class' => 'w50',
+        'tl_class' => 'w50 m25',
     ],
     'sql' => [
         'type' => 'boolean',
