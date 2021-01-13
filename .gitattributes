@@ -5,5 +5,7 @@ package.json export-ignore
 package-lock.json export-ignore
 phpunit.xml.dist export-ignore
 weppack.config.js export-ignore
+phpstan.neon export-ignore
+phpstan.neon.dist export-ignore
 assets/ export-ignore
 tests/ export-ignore
