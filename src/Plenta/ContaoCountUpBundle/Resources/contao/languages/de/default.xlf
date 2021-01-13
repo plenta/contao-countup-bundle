@@ -2,8 +2,11 @@
 <xliff version="1.1">
     <file>
         <body>
-            <trans-unit id="CTE.plenta_countup">
+            <trans-unit id="CTE.plenta_countup.0">
                 <target>Count up</target>
+            </trans-unit>
+            <trans-unit id="CTE.plenta_countup.1">
+                <target>Generates a count up element.</target>
             </trans-unit>
         </body>
     </file>

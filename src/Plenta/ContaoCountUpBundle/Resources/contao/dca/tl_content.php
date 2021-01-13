@@ -5,9 +5,9 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2020, Christian Barkowsky & Christoph Werner
- * @author        Christian Barkowsky <https://plenta.io>
+ * @copyright     Copyright (c) 2021, Christian Barkowsky & Christoph Werner
  * @author        Christoph Werner <https://plenta.io>
+ * @author        Christian Barkowsky <https://plenta.io>
  * @link          https://plenta.io
  * @license       MIT
  */
@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
     'eval' => [
         'maxlength' => 255,
         'tl_class' => 'w50',
-        'mandatory' => true
+        'mandatory' => true,
     ],
     'sql' => "varchar(255) NOT NULL default ''",
 ];
@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValueStart'] = [
     'eval' => [
         'maxlength' => 255,
         'tl_class' => 'w50',
-        'mandatory' => true
+        'mandatory' => true,
     ],
     'sql' => "varchar(255) NOT NULL default '0'",
 ];
@@ -57,7 +57,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDuration'] = [
         'maxlength' => 255,
         'tl_class' => 'w50',
         'rgxp' => 'digit',
-        'mandatory' => true
+        'mandatory' => true,
     ],
     'sql' => "varchar(255) NOT NULL default '2'",
 ];
@@ -101,6 +101,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpSuffix'] = [
     ],
     'sql' => "varchar(255) NOT NULL default ''",
 ];
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpUseGrouping'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpUseGrouping'],
     'exclude' => true,
