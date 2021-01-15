@@ -13,7 +13,7 @@ composer require plenta/contao-countup-bundle
 
 ## Usage
 Simply add the Contao element to your page.  
-The Contao element accepts the following arguments
+The Contao element accepts the following arguments:
 
 - Start value: number to begin the counter from
 - Count up value: number to end the counter at
@@ -24,5 +24,5 @@ The Contao element accepts the following arguments
 - Decimal places are calculated automatically
 
 
-## Screenshots
-![alt text](docs/contao-element.png "Logo Title Text 1")
+## Screenshot
+![alt text](https://github.com/plenta/contao-countup-bundle/docs/contao-element.png "Logo Title Text 1")
