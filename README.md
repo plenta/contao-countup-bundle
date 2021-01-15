@@ -25,4 +25,4 @@ The Contao element accepts the following arguments:
 
 
 ## Screenshot
-<img src="https://github.com/plenta/contao-countup-bundle/blob/master/docs/contao-element.png?raw=true" width="700" alt="Contao-Element">
+<img src="https://github.com/plenta/contao-countup-bundle/blob/master/docs/img/contao-element.png?raw=true" width="700" alt="Contao-Element">
