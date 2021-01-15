@@ -25,4 +25,4 @@ The Contao element accepts the following arguments:
 
 
 ## Screenshot
-![alt text](https://github.com/plenta/contao-countup-bundle/docs/contao-element.png "Logo Title Text 1")
+![Contao-Element](https://raw.githubusercontent.com/plenta/contao-countup-bundle/master/docs/contao-element.png "Contao-Element")
