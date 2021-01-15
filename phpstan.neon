@@ -14,10 +14,6 @@ parameters:
 
     ignoreErrors:
         - '#Access to an undefined property Contao(.*)#'
-        - '#Constant TL_MODE not found.#'
-        - '#Constant FE_USER_LOGGED_IN not found.#'
-        - '#Constant REQUEST_TOKEN not found.#'
-        - '#PHPUnit\\Framework\\MockObject\\MockObject(.*)#'
 
     symfony:
         container_xml_path: /Volumes/Extreme SSD 120GB/htdocs/97Media/Contao-Dev/var/cache/dev/appContao_ManagerBundle_HttpKernel_ContaoKernelDevDebugContainer.xml

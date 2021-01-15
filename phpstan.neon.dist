@@ -11,7 +11,6 @@ parameters:
 
     ignoreErrors:
         - '#Access to an undefined property Contao(.*)#'
-        - '#PHPUnit\\Framework\\MockObject\\MockObject(.*)#'
 
     symfony:
         container_xml_path: %currentWorkingDirectory%/var/cache/dev/appContao_ManagerBundle_HttpKernel_ContaoKernelDevDebugContainer.xml
