@@ -1,7 +1,7 @@
 # Contao Count Up Bundle
 
 This Contao content element counts up numbers.  
-JThis plugin is based on and utilizes [CountUp.js](https://github.com/inorganik/CountUp.js)
+This plugin is based on and utilizes [CountUp.js](https://github.com/inorganik/CountUp.js)
 
 CSS files are not included (coming soon).
 
