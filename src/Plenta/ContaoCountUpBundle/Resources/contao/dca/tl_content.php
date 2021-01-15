@@ -19,7 +19,7 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['plenta_countup'] =
-    '{type_legend},type;{countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpDuration,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpUseGrouping;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop'
+    '{type_legend},type;{countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpDuration,plentaCountUpUseGrouping;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop'
 ;
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpUseGrouping'] = [
     'inputType' => 'checkbox',
     'default' => 1,
     'eval' => [
-        'tl_class' => 'w50 m25',
+        'tl_class' => 'w50 m12',
     ],
     'sql' => [
         'type' => 'boolean',
