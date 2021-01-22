@@ -1,7 +1,14 @@
 {
     "name": "plenta/contao-countup-bundle",
     "description": "This content element counts up numbers.",
+    "keywords": ["contao", "count up", "countup", "countupjs"],
     "type": "contao-bundle",
+    "authors": [
+        {
+            "name": "Plenta",
+            "homepage": "https://plenta.io"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.2",
