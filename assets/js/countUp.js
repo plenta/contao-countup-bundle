@@ -19,51 +19,29 @@ import { CountUp } from 'countup.js';
         countUpItems[el.id] = new CountUp(el.id, el.dataset.endval, options);
     });
 
-    function destroyCountUp(elID)
-    {
-        delete countUpItems.elID;
-    }
+    let options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 1.0
+    };
 
-    var latestKnownScrollY = 0;
-    var ticking = false;
-
-    function onScroll()
-    {
-        latestKnownScrollY = window.scrollY;
-        requestTick();
-    }
-
-    function requestTick()
-    {
-        if (!ticking) {
-            requestAnimationFrame(update);
-        }
-        ticking = true;
-    }
-
-    function update()
-    {
-        ticking = false;
-
-        Array.prototype.forEach.call(elements, function (el,i) {
-            if (true === isInViewport(el)) {
-                countUpItems[el.id].start(destroyCountUp(el.id));
+    const callback = function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                countUpItems[entry.target.id].start(destroyCountUp(entry.target));
             }
         });
-    }
+    };
 
-    requestAnimationFrame(update);
-    window.addEventListener('scroll', onScroll, false);
+    let observer = new IntersectionObserver(callback, options);
 
-    function isInViewport(el)
+    Array.prototype.forEach.call(elements, function (el,i) {
+        observer.observe(el);
+    });
+
+    function destroyCountUp(el)
     {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-
-        );
+        delete countUpItems[el.id];
+        observer.unobserve(el);
     }
 })();
