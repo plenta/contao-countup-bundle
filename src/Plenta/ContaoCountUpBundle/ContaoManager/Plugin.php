@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2021, Christian Barkowsky & Christoph Werner
+ * @copyright     Copyright (c) 2022, Christian Barkowsky & Christoph Werner
  * @author        Christoph Werner <https://plenta.io>
  * @author        Christian Barkowsky <https://plenta.io>
  * @link          https://plenta.io
@@ -34,6 +34,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
 
     public function registerContainerConfiguration(LoaderInterface $loader, array $config): void
     {
-        $loader->load('@ContaoCountUpBundle/Resources/config/config.yml');
+        $loader->load('@ContaoCountUpBundle/Resources/config/config.php');
     }
 }

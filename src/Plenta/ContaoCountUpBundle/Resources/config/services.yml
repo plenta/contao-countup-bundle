@@ -5,7 +5,7 @@ services:
         public: false
 
     Plenta\ContaoCountUpBundle\:
-        resource: ../../../ContaoCountUpBundle
+        resource: ../../../ContaoCountUpBundle/*
         exclude: ../../../ContaoCountUpBundle/{Entity,Migrations,Resources,Tests}
 
     Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement\CountUpElementController:
