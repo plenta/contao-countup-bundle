@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2021, Christian Barkowsky & Christoph Werner
+ * @copyright     Copyright (c) 2022, Christian Barkowsky & Christoph Werner
  * @author        Christoph Werner <https://plenta.io>
  * @author        Christian Barkowsky <https://plenta.io>
  * @link          https://plenta.io
@@ -19,15 +19,8 @@ use Doctrine\DBAL\Connection;
 
 class CountUpListener
 {
-    /**
-     * @var Connection
-     */
-    protected $database;
-
-    /**
-     * @var int
-     */
-    protected $decimalPlaces = 0;
+    protected Connection $database;
+    protected int $decimalPlaces = 0;
 
     public function __construct(Connection $database)
     {
@@ -63,9 +56,10 @@ class CountUpListener
     public function onSubmitCallback(DataContainer $dc): void
     {
         $activeRecord = $dc->activeRecord;
+
         if ('plenta_countup' === $activeRecord->type) {
             $sql = 'UPDATE tl_content SET plentaCountUpDecimalPlaces=? WHERE id=?';
-            $this->database->prepare($sql)->execute([$this->decimalPlaces, $activeRecord->id]);
+            $this->database->prepare($sql)->executeStatement([$this->decimalPlaces, $activeRecord->id]);
         }
     }
 
@@ -88,8 +82,7 @@ class CountUpListener
         $thousandsSeparator = $GLOBALS['TL_LANG']['MSC']['thousandsSeparator'];
 
         $value = str_replace($decimalSeparator, '', $value);
-        $value = str_replace($thousandsSeparator, '', $value);
 
-        return $value;
+        return str_replace($thousandsSeparator, '', $value);
     }
 }
