@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CountUpElementController extends AbstractContentElementController
 {
-    protected $packages;
+    protected Packages $packages;
 
     public function __construct(Packages $packages)
     {
@@ -37,9 +37,9 @@ class CountUpElementController extends AbstractContentElementController
         }
 
         if (0 == $decimalPlaces) {
-            $formatedValue = $value;
+            $formattedValue = $value;
         } else {
-            $formatedValue = substr_replace(
+            $formattedValue = substr_replace(
                 $value,
                 $decimalSeparator,
                 \strlen($value) - $decimalPlaces,
@@ -47,7 +47,7 @@ class CountUpElementController extends AbstractContentElementController
             );
         }
 
-        return $formatedValue;
+        return $formattedValue;
     }
 
     protected function getResponse(Template $template, ContentModel $model, Request $request): ?Response
@@ -77,17 +77,17 @@ class CountUpElementController extends AbstractContentElementController
             '.'
         );
 
-        $dataAttriutes = [];
+        $dataAttributes = [];
 
-        $dataAttriutes[] = 'data-duration="'.$model->plentaCountUpDuration.'"';
-        $dataAttriutes[] = 'data-startval="'.$startValue.'"';
-        $dataAttriutes[] = 'data-endval="'.$endValue.'"';
-        $dataAttriutes[] = 'data-decimalplaces="'.$model->plentaCountUpDecimalPlaces.'"';
-        $dataAttriutes[] = 'data-decimal="'.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'].'"';
-        $dataAttriutes[] = 'data-separator="'.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'].'"';
-        $dataAttriutes[] = 'data-usegrouping='.('1' === $model->plentaCountUpUseGrouping ? 'true' : 'false');
+        $dataAttributes[] = 'data-duration="'.$model->plentaCountUpDuration.'"';
+        $dataAttributes[] = 'data-startval="'.$startValue.'"';
+        $dataAttributes[] = 'data-endval="'.$endValue.'"';
+        $dataAttributes[] = 'data-decimalplaces="'.$model->plentaCountUpDecimalPlaces.'"';
+        $dataAttributes[] = 'data-decimal="'.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'].'"';
+        $dataAttributes[] = 'data-separator="'.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'].'"';
+        $dataAttributes[] = 'data-usegrouping='.('1' === $model->plentaCountUpUseGrouping ? 'true' : 'false');
 
-        $template->dataAttributes = implode(' ', $dataAttriutes);
+        $template->dataAttributes = implode(' ', $dataAttributes);
 
         return $template->getResponse();
     }
