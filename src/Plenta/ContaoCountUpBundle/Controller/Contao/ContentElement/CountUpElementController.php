@@ -85,7 +85,7 @@ class CountUpElementController extends AbstractContentElementController
         $dataAttributes[] = 'data-decimalplaces="'.$model->plentaCountUpDecimalPlaces.'"';
         $dataAttributes[] = 'data-decimal="'.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'].'"';
         $dataAttributes[] = 'data-separator="'.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'].'"';
-        $dataAttributes[] = 'data-usegrouping='.('1' === $model->plentaCountUpUseGrouping ? 'true' : 'false');
+        $dataAttributes[] = 'data-usegrouping='.(('1' === $model->plentaCountUpUseGrouping || 1 === $model->plentaCountUpUseGrouping) ? 'true' : 'false');
 
         $template->dataAttributes = implode(' ', $dataAttributes);
 
