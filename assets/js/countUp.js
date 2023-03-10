@@ -15,7 +15,9 @@ import { CountUp } from 'countup.js';
                 parent.classList.add('countup-init');
                 break;
             case 'onDormant':
-                parent.classList.add('countup-dormant');
+                if (false === parent.classList.contains('countup-running') && false === parent.classList.contains('countup-finished')) {
+                    parent.classList.add('countup-dormant');
+                }
                 break;
             case 'onRunning':
                 parent.classList.add('countup-running');
