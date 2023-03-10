@@ -7,6 +7,28 @@ import { CountUp } from 'countup.js';
     var elements = document.querySelectorAll('.ce_plenta_countup .countUpValue');
     var countUpItems = {};
 
+    const setCssClasses = (el, state) => {
+        let parent = el.parentElement;
+
+        switch (state) {
+            case 'onInit':
+                parent.classList.add('countup-init');
+                break;
+            case 'onDormant':
+                parent.classList.add('countup-dormant');
+                break;
+            case 'onRunning':
+                parent.classList.add('countup-running');
+                parent.classList.remove('countup-dormant');
+                break;
+            case 'onFinished':
+                parent.classList.add('countup-finished');
+                parent.classList.remove('countup-dormant');
+                parent.classList.remove('countup-running');
+                break;
+        }
+    };
+
     Array.prototype.forEach.call(elements, function (el,i) {
         var options = {
             'duration': el.dataset.duration,
@@ -18,6 +40,7 @@ import { CountUp } from 'countup.js';
             'useEasing': (el.dataset.useeasing === "true" ? true : false)
         };
         countUpItems[el.id] = new CountUp(el.id, el.dataset.endval, options);
+        setCssClasses(el, 'onInit');
     });
 
     let options = {
@@ -29,7 +52,16 @@ import { CountUp } from 'countup.js';
     const callback = function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                countUpItems[entry.target.id].start(destroyCountUp(entry.target));
+                setCssClasses(entry.target, 'onRunning');
+
+                countUpItems[entry.target.id].start(() => {
+                    setCssClasses(entry.target, 'onFinished');
+                    destroyCountUp(entry.target);
+                });
+            } else {
+                if (false === entry.target.parentElement.classList.contains('countup-running') || false === entry.target.parentElement.classList.contains('countup-finished')) {
+                    setCssClasses(entry.target, 'onDormant');
+                }
             }
         });
     };
