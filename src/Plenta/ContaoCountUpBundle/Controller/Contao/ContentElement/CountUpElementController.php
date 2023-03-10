@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2021, Christian Barkowsky & Christoph Werner
+ * @copyright     Copyright (c) 2023, Christian Barkowsky & Christoph Werner
  * @author        Christoph Werner <https://plenta.io>
  * @author        Christian Barkowsky <https://plenta.io>
  * @link          https://plenta.io
@@ -17,6 +17,7 @@ namespace Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\Template;
+use Plenta\ContaoCountUpBundle\NumberFormat\NumberFormat;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,45 +25,12 @@ use Symfony\Component\HttpFoundation\Response;
 class CountUpElementController extends AbstractContentElementController
 {
     protected Packages $packages;
+    protected NumberFormat $numberFormat;
 
-    public function __construct(Packages $packages)
+    public function __construct(Packages $packages, NumberFormat $numberFormat)
     {
         $this->packages = $packages;
-    }
-
-    public function formatValue(
-        $value,
-        $decimalPlaces,
-        $decimalSeparator = null,
-        bool $useGrouping = false,
-        ?string $thousandsSeparator = null
-    ) {
-        if (null === $decimalSeparator) {
-            $decimalSeparator = $GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
-        }
-
-        if (null === $thousandsSeparator) {
-            $thousandsSeparator = $GLOBALS['TL_LANG']['MSC']['thousandsSeparator'];
-        }
-
-        if (0 == $decimalPlaces) {
-            $formattedValue = $value;
-        } else {
-            $formattedValue = substr_replace(
-                $value,
-                $decimalSeparator,
-                \strlen($value) - $decimalPlaces,
-                0
-            );
-        }
-
-        if (true === $useGrouping) {
-            $valueFloat = floatval($this->formatValue($value, $decimalPlaces, '.'));
-
-            return number_format($valueFloat, $decimalPlaces, $decimalSeparator, $thousandsSeparator);
-        }
-
-        return $formattedValue;
+        $this->numberFormat = $numberFormat;
     }
 
     public function useGrouping(ContentModel $model): bool
@@ -84,20 +52,20 @@ class CountUpElementController extends AbstractContentElementController
 
         $template->valueID = 'countup-'.$model->id.'-value';
 
-        $template->plentaCountUpValue = $this->formatValue(
+        $template->plentaCountUpValue = $this->numberFormat->formatValue(
             $model->plentaCountUpValue,
             $model->plentaCountUpDecimalPlaces,
             null,
             $this->useGrouping($model)
         );
 
-        $startValue = $this->formatValue(
+        $startValue = $this->numberFormat->formatValue(
             $model->plentaCountUpValueStart,
             $model->plentaCountUpDecimalPlaces,
             '.'
         );
 
-        $endValue = $this->formatValue(
+        $endValue = $this->numberFormat->formatValue(
             $model->plentaCountUpValue,
             $model->plentaCountUpDecimalPlaces,
             '.'
