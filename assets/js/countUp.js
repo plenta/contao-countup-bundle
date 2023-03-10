@@ -14,7 +14,8 @@ import { CountUp } from 'countup.js';
             'decimalPlaces': el.dataset.decimalplaces,
             'decimal': el.dataset.decimal,
             'separator': el.dataset.separator,
-            'useGrouping': (el.dataset.usegrouping === "true" ? true : false)
+            'useGrouping': (el.dataset.usegrouping === "true" ? true : false),
+            'useEasing': (el.dataset.useeasing === "true" ? true : false)
         };
         countUpItems[el.id] = new CountUp(el.id, el.dataset.endval, options);
     });

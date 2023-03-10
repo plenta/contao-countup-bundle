@@ -38,6 +38,12 @@
             <trans-unit id="tl_content.plentaCountUpUseGrouping.1">
                 <target>Activate number grouping (1,000 vs 1000).</target>
             </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseEasing.0">
+                <target>Easing</target>
+            </trans-unit>
+            <trans-unit id="tl_content.plentaCountUpUseEasing.1">
+                <target>Easing</target>
+            </trans-unit>
             <trans-unit id="tl_content.countup_legend">
                 <target>Count up settings</target>
             </trans-unit>

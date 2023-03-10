@@ -32,9 +32,9 @@ class CountUpElementController extends AbstractContentElementController
         $this->numberFormat = $numberFormat;
     }
 
-    public function useGrouping(ContentModel $model): bool
+    public function getBoolFromDatabaseValue($value)
     {
-        if ('1' === $model->plentaCountUpUseGrouping || 1 === $model->plentaCountUpUseGrouping) {
+        if ('1' === $value || 1 === $value) {
             return true;
         }
 
@@ -55,7 +55,7 @@ class CountUpElementController extends AbstractContentElementController
             $model->plentaCountUpValue,
             $model->plentaCountUpDecimalPlaces,
             null,
-            $this->useGrouping($model)
+            $this->getBoolFromDatabaseValue($model->plentaCountUpUseGrouping)
         );
 
         $startValue = $this->numberFormat->formatValue(
@@ -78,7 +78,8 @@ class CountUpElementController extends AbstractContentElementController
         $dataAttributes[] = 'data-decimalplaces="'.$model->plentaCountUpDecimalPlaces.'"';
         $dataAttributes[] = 'data-decimal="'.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'].'"';
         $dataAttributes[] = 'data-separator="'.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'].'"';
-        $dataAttributes[] = 'data-usegrouping='.($this->useGrouping($model) ? 'true' : 'false');
+        $dataAttributes[] = 'data-usegrouping='.($this->getBoolFromDatabaseValue($model->plentaCountUpUseGrouping) ? 'true' : 'false');
+        $dataAttributes[] = 'data-useEasing='.($this->getBoolFromDatabaseValue($model->plentaCountUpUseEasing) ? 'true' : 'false');
 
         $template->dataAttributes = implode(' ', $dataAttributes);
 

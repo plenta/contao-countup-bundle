@@ -18,11 +18,10 @@ $GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['plenta_countup'] =
-    '{type_legend},type;{countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpDuration,plentaCountUpUseGrouping;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop'
+    '{type_legend},type;{countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpDuration,plentaCountUpUseEasing,plentaCountUpUseGrouping;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop'
 ;
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpValue'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -35,7 +34,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValueStart'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpValueStart'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -48,7 +46,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValueStart'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDuration'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpDuration'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -62,7 +59,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDuration'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDecimalPlaces'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpDecimalPlaces'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -78,7 +74,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpDecimalPlaces'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpPrefix'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpPrefix'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -90,7 +85,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpPrefix'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpSuffix'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpSuffix'],
     'exclude' => true,
     'sorting' => true,
     'inputType' => 'text',
@@ -102,7 +96,19 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpSuffix'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpUseGrouping'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_content']['plentaCountUpUseGrouping'],
+    'exclude' => true,
+    'inputType' => 'checkbox',
+    'default' => 1,
+    'eval' => [
+        'tl_class' => 'w50 m12',
+    ],
+    'sql' => [
+        'type' => 'boolean',
+        'default' => true,
+    ],
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpUseEasing'] = [
     'exclude' => true,
     'inputType' => 'checkbox',
     'default' => 1,
