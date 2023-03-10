@@ -5,9 +5,8 @@ $date = date('Y');
 $header = <<<EOF
 Count up element for Contao Open Source CMS
 
-@copyright     Copyright (c) $date, Christian Barkowsky & Christoph Werner
-@author        Christoph Werner <https://plenta.io>
-@author        Christian Barkowsky <https://plenta.io>
+@copyright     Copyright (c) $date, Plenta.io
+@author        Plenta.io <https://plenta.io>
 @link          https://plenta.io
 @license       MIT
 EOF;

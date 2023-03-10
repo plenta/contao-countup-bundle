@@ -5,9 +5,8 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2023, Christian Barkowsky & Christoph Werner
- * @author        Christoph Werner <https://plenta.io>
- * @author        Christian Barkowsky <https://plenta.io>
+ * @copyright     Copyright (c) 2023, Plenta.io
+ * @author        Plenta.io <https://plenta.io>
  * @link          https://plenta.io
  * @license       MIT
  */
@@ -49,7 +48,7 @@ class NumberFormat
         }
 
         if (true === $useGrouping) {
-            $valueFloat = (float) ($this->formatValue($value, $decimalPlaces, '.'));
+            $valueFloat = (float) $this->formatValue($value, $decimalPlaces, '.');
 
             return number_format($valueFloat, $decimalPlaces, $decimalSeparator, $thousandsSeparator);
         }

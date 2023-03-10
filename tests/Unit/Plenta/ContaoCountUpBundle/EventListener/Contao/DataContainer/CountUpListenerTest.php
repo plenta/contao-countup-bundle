@@ -5,9 +5,8 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2020, Christian Barkowsky & Christoph Werner
- * @author        Christian Barkowsky <https://plenta.io>
- * @author        Christoph Werner <https://plenta.io>
+ * @copyright     Copyright (c) 2023, Plenta.io
+ * @author        Plenta.io <https://plenta.io>
  * @link          https://plenta.io
  * @license       MIT
  */
