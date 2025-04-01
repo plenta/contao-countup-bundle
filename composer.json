@@ -12,7 +12,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 | ^8.0",
-        "contao/core-bundle": "^4.9",
+        "contao/core-bundle": "^4.13",
         "contao/manager-plugin": "^2.11.0"
     },
     "require-dev": {
