@@ -1,7 +1,7 @@
 # Contao Count Up Bundle
 
 This Contao content element counts up numbers.  
-This plugin is based on and utilizes [CountUp.js](https://github.com/inorganik/CountUp.js)
+This plugin is based on and uses [CountUp.js](https://github.com/inorganik/CountUp.js).
 
 CSS files are not included (coming soon).
 
@@ -14,23 +14,23 @@ composer require plenta/contao-countup-bundle
 ### Which version is right for you?
 
 | Contao Version | PHP Version | Contao Count Up Bundle Version |
-|----------------|-------------|--------------|
-| 4.9.*          | \>= 7.4     | 2.*          |
-| 4.13.*         | \>= 7.4     | 2.*          |
-| 5.*            | \>= 8.3     | 3.*          |
+|----------------|-------------|--------------------------------|
+| 4.9.*          | \>= 7.4     | 2.2.1                          |
+| 4.13.*         | \>= 7.4     | 2.3.*                          |
+| 5.*            | \>= 8.3     | 3.*                            |
 
 
 ## Usage
-Simply add the Contao element to your page.  
-The Contao element accepts the following arguments:
+To use this, simply add the Contao element to your page.
+The Contao element accepts the following options:
 
-- Start value: number to begin the counter from
-- Count up value: number to end the counter at
-- Animation duration: time in seconds
-- Prefix: text at the beginning the value
-- Suffix: text added at the end of the value
-- Number grouping: enable grouping of numbers (1,000 vs 1000)
-- Decimal places are calculated automatically
+- Start value: The number where the counter begins.
+- Count up value: The number where the counter ends.
+- Animation duration: The time (in seconds) for the animation to complete.
+- Prefix: Text added before the number.
+- Suffix: Text added after the number.
+- Number grouping: Enable grouping for large numbers (e.g., 1,000 instead of 1000).
+- Decimal places: Decimal places are automatically calculated.
 
 ### Using Insert Tags
 You can use insert tags to set the start and end values, but there are some rules:
