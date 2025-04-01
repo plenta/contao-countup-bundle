@@ -55,4 +55,34 @@ class NumberFormat
 
         return $formattedValue;
     }
+
+    public function stripSeparatorsFromString(string $value, ?string $decimalSeparator, ?string $thousandsSeparator): string
+    {
+        if (null === $decimalSeparator) {
+            $decimalSeparator = $GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
+        }
+
+        if (null === $thousandsSeparator) {
+            $thousandsSeparator = $GLOBALS['TL_LANG']['MSC']['thousandsSeparator'];
+        }
+
+        $value = str_replace($decimalSeparator, '', $value);
+
+        return str_replace($thousandsSeparator, '', $value);
+    }
+
+    public function getDecimalPlaces(string $value, ?string $decimalSeparator): int
+    {
+        if (null === $decimalSeparator) {
+            $decimalSeparator = $GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
+        }
+
+        $decimalPosition = strpos($value, $decimalSeparator);
+
+        if (false === $decimalPosition) {
+            return 0;
+        }
+
+        return \strlen($value) - $decimalPosition - 1;
+    }
 }

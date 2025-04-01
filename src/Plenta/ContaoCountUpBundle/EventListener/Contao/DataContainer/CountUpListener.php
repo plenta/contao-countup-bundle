@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Count up element for Contao Open Source CMS
  *
- * @copyright     Copyright (c) 2023, Plenta.io
+ * @copyright     Copyright (c) 2025, Plenta.io
  * @author        Plenta.io <https://plenta.io>
  * @link          https://plenta.io
  * @license       MIT
@@ -15,19 +15,32 @@ namespace Plenta\ContaoCountUpBundle\EventListener\Contao\DataContainer;
 
 use Contao\DataContainer;
 use Doctrine\DBAL\Connection;
+use Plenta\ContaoCountUpBundle\InsertTag\InsertTag;
+use Plenta\ContaoCountUpBundle\NumberFormat\NumberFormat;
 
 class CountUpListener
 {
     protected Connection $database;
+    protected InsertTag $insertTag;
+    protected NumberFormat $numberFormat;
     protected int $decimalPlaces = 0;
 
-    public function __construct(Connection $database)
-    {
+    public function __construct(
+        Connection $database,
+        InsertTag $insertTag,
+        NumberFormat $numberFormat
+    ) {
         $this->database = $database;
+        $this->insertTag = $insertTag;
+        $this->numberFormat = $numberFormat;
     }
 
     public function onValueSaveCallback($value, DataContainer $dc)
     {
+        if (true === $this->insertTag->isInsertTag($value)) {
+            return $value;
+        }
+
         $decimalPlaces = $this->getDecimalPlaces($value);
         $value = $this->stripSeparatorsFromString($value);
 
@@ -39,6 +52,10 @@ class CountUpListener
     public function onValueLoadCallback($value, DataContainer $dc)
     {
         $activeRecord = $dc->activeRecord;
+
+        if (true === $this->insertTag->isInsertTag($value)) {
+            return $value;
+        }
 
         if (0 == $activeRecord->plentaCountUpDecimalPlaces) {
             return $value;
@@ -64,24 +81,11 @@ class CountUpListener
 
     public function getDecimalPlaces($value): int
     {
-        $decimalSeparator = $GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
-
-        $decimalPosition = strpos($value, $decimalSeparator);
-
-        if (false === $decimalPosition) {
-            return 0;
-        }
-
-        return \strlen($value) - $decimalPosition - 1;
+        return $this->numberFormat->getDecimalPlaces($value, null);
     }
 
     public function stripSeparatorsFromString($value)
     {
-        $decimalSeparator = $GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
-        $thousandsSeparator = $GLOBALS['TL_LANG']['MSC']['thousandsSeparator'];
-
-        $value = str_replace($decimalSeparator, '', $value);
-
-        return str_replace($thousandsSeparator, '', $value);
+        return $this->numberFormat->stripSeparatorsFromString($value, null, null);
     }
 }
