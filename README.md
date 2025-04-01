@@ -32,6 +32,14 @@ The Contao element accepts the following arguments:
 - Number grouping: enable grouping of numbers (1,000 vs 1000)
 - Decimal places are calculated automatically
 
+### Using Insert Tags
+You can use insert tags to set the start and end values, but there are some rules:
+- The decimal point must be a `.` (dot) and the thousands separator must be a `,` (comma).
+- Both numbers must have the same format. For example, if one number has two decimal places, the other must also have two decimal places.
+- Only numbers are allowed.
+- The backend input fields can either accept numbers or insert tags, but not both in the same field.
+
+
 
 ## Screenshot
 <img src="https://github.com/plenta/contao-countup-bundle/blob/master/docs/img/contao-element.png?raw=true" width="700" alt="Contao-Element">
