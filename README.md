@@ -11,6 +11,15 @@ CSS files are not included (coming soon).
 composer require plenta/contao-countup-bundle
 ```
 
+### Which version is right for you?
+
+| Contao Version | PHP Version | Contao Count Up Bundle Version |
+|----------------|-------------|--------------|
+| 4.9.*          | \>= 7.4     | 2.*          |
+| 4.13.*         | \>= 7.4     | 2.*          |
+| 5.*            | \>= 8.3     | 3.*          |
+
+
 ## Usage
 Simply add the Contao element to your page.  
 The Contao element accepts the following arguments:
