@@ -26,8 +26,12 @@ class InsertTag
         $this->framework = $framework;
     }
 
-    public function isInsertTag(string $value): bool
+    public function isInsertTag(?string $value): bool
     {
+        if (null === $value) {
+            return false;
+        }
+
         $openPos = strpos($value, '{{');
         $closePos = strpos($value, '}}');
 

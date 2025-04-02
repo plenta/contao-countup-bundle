@@ -1,9 +1,0 @@
-<div class="<?= $this->class; ?>"<?= $this->cssID; ?>>
-    <?php if ($this->plentaCountUpPrefix) : ?>
-        <span class="countUpPrefix"><?= $this->plentaCountUpPrefix; ?></span>
-    <?php endif; ?>
-    <span class="countUpValue" id="<?= $this->valueID; ?>" <?= $this->dataAttributes; ?>><?= $this->plentaCountUpValue; ?></span>
-    <?php if ($this->plentaCountUpSuffix) : ?>
-        <span class="countUpSuffix"><?= $this->plentaCountUpSuffix; ?></span>
-    <?php endif; ?>
-</div>

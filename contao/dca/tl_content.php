@@ -12,14 +12,20 @@ declare(strict_types=1);
  */
 
 use Plenta\ContaoCountUpBundle\EventListener\Contao\DataContainer\CountUpListener;
+use Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement\CountUpElementController;
 
 $GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [
     CountUpListener::class, 'onSubmitCallback',
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['plenta_countup'] =
-    '{type_legend},type;{countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpDuration,plentaCountUpUseEasing,plentaCountUpUseGrouping;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID;{invisible_legend:hide},invisible,start,stop'
-;
+$GLOBALS['TL_DCA']['tl_content']['palettes'][CountUpElementController::TYPE] = '
+    {type_legend},type;
+    {countup_legend},plentaCountUpValue,plentaCountUpValueStart,plentaCountUpPrefix,plentaCountUpSuffix,plentaCountUpDuration,plentaCountUpUseEasing,plentaCountUpUseGrouping;
+    {template_legend:hide},customTpl;
+    {protected_legend:hide},protected;
+    {expert_legend:hide},guests,cssID;
+    {invisible_legend:hide},invisible,start,stop
+';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['plentaCountUpValue'] = [
     'exclude' => true,

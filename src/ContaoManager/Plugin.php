@@ -33,6 +33,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
 
     public function registerContainerConfiguration(LoaderInterface $loader, array $config): void
     {
-        $loader->load('@ContaoCountUpBundle/Resources/config/config.php');
+        $loader->load(__DIR__.'/../../config/config.php');
     }
 }

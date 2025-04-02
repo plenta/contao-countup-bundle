@@ -3,8 +3,8 @@
 
 import { CountUp } from 'countup.js';
 
-(function () {
-    var elements = document.querySelectorAll('.ce_plenta_countup .countUpValue');
+(() => {
+    var elements = document.querySelectorAll('.content-plenta-countup .countup-value');
     var countUpItems = {};
 
     const setCssClasses = (el, state) => {

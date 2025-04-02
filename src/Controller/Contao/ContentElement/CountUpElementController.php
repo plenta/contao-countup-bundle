@@ -15,18 +15,22 @@ namespace Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement;
 
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
-use Contao\Template;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
+use Contao\CoreBundle\Twig\FragmentTemplate;
 use Plenta\ContaoCountUpBundle\InsertTag\InsertTag;
 use Plenta\ContaoCountUpBundle\NumberFormat\NumberFormat;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+#[AsContentElement(type: self::TYPE, category: 'texts')]
 class CountUpElementController extends AbstractContentElementController
 {
     protected Packages $packages;
     protected NumberFormat $numberFormat;
     protected InsertTag $insertTag;
+
+    public const string TYPE = 'plenta_countup';
 
     public function __construct(
         Packages $packages,
@@ -47,19 +51,21 @@ class CountUpElementController extends AbstractContentElementController
         return false;
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): ?Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $GLOBALS['TL_BODY']['contao-count-up-js'] = '<script src="'.$this->packages->getUrl('contaocountup/countup.js', 'contaocountup').'" defer ></script>';
+        $modelRow = $model->row();
 
-        if ('' === $template->cssID) {
-            $template->cssID = ' id="countup-'.$model->id.'"';
+        if ('' === $template->get('element_html_id')) {
+            $template->set('element_html_id', 'countup-'.$model->id.'"');
         }
 
-        $template->valueID = 'countup-'.$model->id.'-value';
+        $template->set('valueID', 'countup-'.$model->id.'-value');
+        $template->set('plentaCountUpPrefix', $modelRow['plentaCountUpPrefix']);
+        $template->set('plentaCountUpSuffix', $modelRow['plentaCountUpSuffix']);
 
-        $countUpValue = $model->plentaCountUpValue;
-        $countUpValueStart = $model->plentaCountUpValueStart;
-        $decimalPlaces = $model->plentaCountUpDecimalPlaces;
+        $countUpValue = $modelRow['plentaCountUpValue'];
+        $countUpValueStart = $modelRow['plentaCountUpValueStart'];
+        $decimalPlaces = $modelRow['plentaCountUpDecimalPlaces'];
 
         if (true === $this->insertTag->isInsertTag($countUpValue)) {
             $countUpValue = $this->insertTag->replaceInsertTag($countUpValue);
@@ -73,37 +79,37 @@ class CountUpElementController extends AbstractContentElementController
             $countUpValueStart = $this->numberFormat->stripSeparatorsFromString($countUpValueStart, '.', ',');
         }
 
-        $template->plentaCountUpValue = $this->numberFormat->formatValue(
+        $template->set('plentaCountUpValue', $this->numberFormat->formatValue(
             $countUpValue,
             $decimalPlaces,
             null,
-            $this->getBoolFromDatabaseValue($model->plentaCountUpUseGrouping)
-        );
+            $this->getBoolFromDatabaseValue($modelRow['plentaCountUpUseGrouping'])
+        ));
 
         $startValue = $this->numberFormat->formatValue(
             $countUpValueStart,
-            $model->plentaCountUpDecimalPlaces,
+            $modelRow['plentaCountUpDecimalPlaces'],
             '.'
         );
 
         $endValue = $this->numberFormat->formatValue(
             $countUpValue,
-            $model->plentaCountUpDecimalPlaces,
+            $modelRow['plentaCountUpDecimalPlaces'],
             '.'
         );
 
         $dataAttributes = [];
 
-        $dataAttributes[] = 'data-duration="'.$model->plentaCountUpDuration.'"';
-        $dataAttributes[] = 'data-startval="'.$startValue.'"';
-        $dataAttributes[] = 'data-endval="'.$endValue.'"';
-        $dataAttributes[] = 'data-decimalplaces="'.$decimalPlaces.'"';
-        $dataAttributes[] = 'data-decimal="'.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'].'"';
-        $dataAttributes[] = 'data-separator="'.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'].'"';
-        $dataAttributes[] = 'data-usegrouping='.($this->getBoolFromDatabaseValue($model->plentaCountUpUseGrouping) ? 'true' : 'false');
-        $dataAttributes[] = 'data-useEasing='.($this->getBoolFromDatabaseValue($model->plentaCountUpUseEasing) ? 'true' : 'false');
+        $dataAttributes[] = 'data-duration='.$modelRow['plentaCountUpDuration'];
+        $dataAttributes[] = 'data-startval='.$startValue;
+        $dataAttributes[] = 'data-endval='.$endValue;
+        $dataAttributes[] = 'data-decimalplaces='.$decimalPlaces;
+        $dataAttributes[] = 'data-decimal='.$GLOBALS['TL_LANG']['MSC']['decimalSeparator'];
+        $dataAttributes[] = 'data-separator='.$GLOBALS['TL_LANG']['MSC']['thousandsSeparator'];
+        $dataAttributes[] = 'data-usegrouping='.($this->getBoolFromDatabaseValue($modelRow['plentaCountUpUseGrouping']) ? 'true' : 'false');
+        $dataAttributes[] = 'data-useEasing='.($this->getBoolFromDatabaseValue($modelRow['plentaCountUpUseEasing']) ? 'true' : 'false');
 
-        $template->dataAttributes = implode(' ', $dataAttributes);
+        $template->set('dataAttributes', implode(' ', $dataAttributes));
 
         return $template->getResponse();
     }

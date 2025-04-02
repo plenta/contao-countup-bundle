@@ -5,15 +5,8 @@ services:
         public: false
 
     Plenta\ContaoCountUpBundle\:
-        resource: ../../../ContaoCountUpBundle/*
-        exclude: ../../../ContaoCountUpBundle/{Entity,Migrations,Resources,Tests}
-
-    Plenta\ContaoCountUpBundle\Controller\Contao\ContentElement\CountUpElementController:
-        tags:
-            -   name: contao.content_element
-                category: texts
-                template: ce_plenta_countup
-                type: plenta_countup
+        resource: ../src
+        exclude: ../src{Entity,Migrations,Resources,Tests}
 
     Plenta\ContaoCountUpBundle\EventListener\Contao\DataContainer\CountUpListener:
         public: true

@@ -2,7 +2,7 @@ var Encore = require('@symfony/webpack-encore');
 var bundleName = 'ContaoCountUpBundle';
 
 Encore
-    .setOutputPath('src/Plenta/ContaoCountUpBundle/Resources/public')
+    .setOutputPath('public')
     .setPublicPath('/bundles/contaocountup')
     .setManifestKeyPrefix('contaocountup')
 
