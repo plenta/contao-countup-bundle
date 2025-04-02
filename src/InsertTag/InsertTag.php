@@ -13,17 +13,13 @@ declare(strict_types=1);
 
 namespace Plenta\ContaoCountUpBundle\InsertTag;
 
-
-use Contao\Controller;
-use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\InsertTag\InsertTagParser;
 
 class InsertTag
 {
-    protected ContaoFramework $framework;
     public function __construct(
-        ContaoFramework $framework
+        protected InsertTagParser $insertTagParser
     ) {
-        $this->framework = $framework;
     }
 
     public function isInsertTag(?string $value): bool
@@ -40,8 +36,6 @@ class InsertTag
 
     public function replaceInsertTag(string $value): string
     {
-        $controller = $this->framework->getAdapter(Controller::class);
-
-        return $controller->replaceInsertTags($value);
+        return $this->insertTagParser->replace($value);
     }
 }
