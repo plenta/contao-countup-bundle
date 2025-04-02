@@ -26,23 +26,16 @@ use Symfony\Component\HttpFoundation\Response;
 #[AsContentElement(type: self::TYPE, category: 'texts')]
 class CountUpElementController extends AbstractContentElementController
 {
-    protected Packages $packages;
-    protected NumberFormat $numberFormat;
-    protected InsertTag $insertTag;
-
     public const string TYPE = 'plenta_countup';
 
     public function __construct(
-        Packages $packages,
-        NumberFormat $numberFormat,
-        InsertTag $insertTag
-    ){
-        $this->packages = $packages;
-        $this->numberFormat = $numberFormat;
-        $this->insertTag = $insertTag;
+        protected Packages $packages,
+        protected NumberFormat $numberFormat,
+        protected InsertTag $insertTag
+    ) {
     }
 
-    public function getBoolFromDatabaseValue($value)
+    public function getBoolFromDatabaseValue($value): bool
     {
         if ('1' === $value || 1 === $value) {
             return true;
