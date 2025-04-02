@@ -57,4 +57,4 @@ You can use insert tags to set the start and end values, but there are some rule
 The script for the countup bundle has been moved. It is now inside the `block script` section of the new twig template. Previously, the script was added to the `$GLOBALS['TL_BODY']` in the `getResponse` method of the content element controller.
 
 ## Screenshot
-<img src="https://github.com/plenta/contao-countup-bundle/blob/master/docs/img/contao-element.png?raw=true" width="700" alt="Contao-Element">
+<img src="https://github.com/plenta/contao-countup-bundle/blob/main/docs/img/contao-element.png?raw=true" width="700" alt="Contao-Element">
