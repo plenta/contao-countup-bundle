@@ -37,11 +37,7 @@ class CountUpElementController extends AbstractContentElementController
 
     public function getBoolFromDatabaseValue($value): bool
     {
-        if ('1' === $value || 1 === $value) {
-            return true;
-        }
-
-        return false;
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }
 
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
